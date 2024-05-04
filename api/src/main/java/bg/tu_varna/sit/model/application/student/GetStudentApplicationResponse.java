@@ -1,4 +1,6 @@
 package bg.tu_varna.sit.model.application.student;
 
-public class GetStudentApplicationResponse {
+import bg.tu_varna.sit.base.OperationResponse;
+
+public class GetStudentApplicationResponse implements OperationResponse {
 }

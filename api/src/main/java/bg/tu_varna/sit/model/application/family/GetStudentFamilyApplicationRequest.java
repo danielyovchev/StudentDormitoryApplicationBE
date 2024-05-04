@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.model.application.student;
+package bg.tu_varna.sit.model.application.family;
 
 import bg.tu_varna.sit.base.OperationInput;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class GetStudentApplicationRequest implements OperationInput {
+public class GetStudentFamilyApplicationRequest implements OperationInput {
     private String studentId;
 }
