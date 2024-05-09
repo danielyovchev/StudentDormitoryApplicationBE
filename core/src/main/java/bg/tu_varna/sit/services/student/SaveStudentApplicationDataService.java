@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.services;
+package bg.tu_varna.sit.services.student;
 
 import bg.tu_varna.sit.base.Error;
 import bg.tu_varna.sit.model.application.student.SaveStudentApplicationRequest;

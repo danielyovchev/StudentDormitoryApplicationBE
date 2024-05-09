@@ -8,6 +8,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class GetStudentFamilyApplicationRequest implements OperationInput {
+public class GetStudentParentApplicationRequest implements OperationInput {
     private String studentId;
 }
