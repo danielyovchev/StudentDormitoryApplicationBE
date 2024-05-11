@@ -5,18 +5,19 @@ import bg.tu_varna.sit.model.application.documents.UploadDocumentRequest;
 import bg.tu_varna.sit.model.application.documents.UploadDocumentResponse;
 import bg.tu_varna.sit.model.application.family.get.GetStudentParentApplicationRequest;
 import bg.tu_varna.sit.model.application.family.get.GetStudentParentApplicationResponse;
-import bg.tu_varna.sit.model.application.family.save.SaveStudentParentApplicationRequest;
-import bg.tu_varna.sit.model.application.family.save.SaveStudentParentApplicationResponse;
+import bg.tu_varna.sit.model.application.family.save.*;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationRequest;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationResponse;
 import bg.tu_varna.sit.model.application.student.SaveStudentApplicationRequest;
 import bg.tu_varna.sit.model.application.student.SaveStudentApplicationResponse;
 import bg.tu_varna.sit.operation.student.GetStudentApplicationDataOperation;
-import bg.tu_varna.sit.operation.student.GetStudentDocumentOperation;
+import bg.tu_varna.sit.operation.student.document.GetStudentDocumentOperation;
 import bg.tu_varna.sit.operation.student.SaveStudentApplicationDataOperation;
-import bg.tu_varna.sit.operation.student.UploadStudentDocumentOperation;
+import bg.tu_varna.sit.operation.student.document.UploadStudentDocumentOperation;
 import bg.tu_varna.sit.operation.student.family.GetStudentParentDataOperation;
+import bg.tu_varna.sit.operation.student.family.SaveStudentChildDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentParentDataOperation;
+import bg.tu_varna.sit.operation.student.family.SaveStudentSiblingDataOperation;
 import io.vavr.control.Either;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -27,13 +28,12 @@ import lombok.RequiredArgsConstructor;
 
 @Path("/upload")
 @RequiredArgsConstructor
-public class StudentApplicationResource {
+public class StudentApplicationSaveResource {
     private final SaveStudentApplicationDataOperation saveStudentApplicationDataOperation;
-    private final GetStudentApplicationDataOperation getStudentApplicationDataOperation;
     private final SaveStudentParentDataOperation saveStudentParentDataOperation;
+    private final SaveStudentChildDataOperation saveStudentChildDataOperation;
+    private final SaveStudentSiblingDataOperation saveStudentSiblingDataOperation;
     private final UploadStudentDocumentOperation uploadStudentDocumentOperation;
-    private final GetStudentParentDataOperation getStudentParentDataOperation;
-    private final GetStudentDocumentOperation getStudentDocumentOperation;
 
     @POST
     @Path("/student/data")
@@ -50,31 +50,23 @@ public class StudentApplicationResource {
     }
 
     @POST
+    @Path("/student/sibling")
+    public Response saveStudentSiblingData(SaveStudentSiblingDataRequest request) {
+        Either<Error, SaveStudentSiblingDataResponse> process = saveStudentSiblingDataOperation.process(request);
+        return Response.ok().build();
+    }
+
+    @POST
+    @Path("/student/child")
+    public Response saveStudentChildData(SaveStudentChildDataRequest request) {
+        Either<Error, SaveStudentChildDataResponse> process = saveStudentChildDataOperation.process(request);
+        return Response.ok().build();
+    }
+
+    @POST
     @Path("/student/documents")
     public Response saveStudentDocument(UploadDocumentRequest request) {
         Either<Error, UploadDocumentResponse> process = uploadStudentDocumentOperation.process(request);
-        return Response.ok().build();
-    }
-
-    @GET
-    @Path("/student/{studentId}/data")
-    public Response getStudentData(@PathParam("studentId") String studentId) {
-        GetStudentApplicationRequest request = new GetStudentApplicationRequest(studentId);
-        Either<Error, GetStudentApplicationResponse> process = getStudentApplicationDataOperation.process(request);
-        return Response.ok(process).build();
-    }
-
-    @GET
-    @Path("/student/{studentId}/family")
-    public Response getStudentFamilyData(String studentId) {
-        GetStudentParentApplicationRequest request = new GetStudentParentApplicationRequest(studentId);
-        Either<Error, GetStudentParentApplicationResponse> process = getStudentParentDataOperation.process(request);
-        return Response.ok().build();
-    }
-
-    @GET
-    @Path("/student/{studentId}/documents")
-    public Response getStudentDocument(String studentId) {
         return Response.ok().build();
     }
 }

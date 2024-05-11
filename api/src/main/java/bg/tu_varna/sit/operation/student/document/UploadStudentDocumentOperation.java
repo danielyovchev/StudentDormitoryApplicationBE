@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.operation.student;
+package bg.tu_varna.sit.operation.student.document;
 
 import bg.tu_varna.sit.base.Error;
 import bg.tu_varna.sit.base.OperationProcessor;
