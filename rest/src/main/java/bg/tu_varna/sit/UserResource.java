@@ -16,13 +16,13 @@ public class UserResource {
     KeycloakService keycloakService;
     @GET
     @Path("/example")
-    @PermitAll
+    //@PermitAll
     public Response exampleEndpoint(){
         return Response.ok("Good").build();
     }
     @GET
     @Path("/example/admin")
-    @RolesAllowed("admin")
+    //@RolesAllowed("admin")
     public Response exampleEndpointAutg(){
         return Response.ok("Good").build();
     }

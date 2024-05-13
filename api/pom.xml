@@ -14,5 +14,9 @@
         <maven.compiler.target>21</maven.compiler.target>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-reactive</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -19,10 +19,10 @@
             <artifactId>core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-oidc</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-oidc</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi</artifactId>
@@ -36,9 +36,9 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive</artifactId>
         </dependency>
-        <!--    <dependency>-->
-        <!--      <groupId>io.quarkus</groupId>-->
-        <!--      <artifactId>quarkus-resteasy-jackson</artifactId>-->
-        <!--    </dependency>-->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -39,7 +39,12 @@ public class StudentApplicationSaveResource {
     @Path("/student/data")
     public Response saveStudentData(SaveStudentApplicationRequest request) {
         Either<Error, SaveStudentApplicationResponse> process = saveStudentApplicationDataOperation.process(request);
-        return Response.ok(process).build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getMessage()).build();
     }
 
     @POST
