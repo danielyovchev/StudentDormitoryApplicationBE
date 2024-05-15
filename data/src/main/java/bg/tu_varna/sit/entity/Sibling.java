@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Sibling {
+public class Sibling extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

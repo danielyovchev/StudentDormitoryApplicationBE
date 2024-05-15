@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Dormitory {
+public class Dormitory extends PanacheEntityBase {
     @Id
     private UUID id;
     private String name;

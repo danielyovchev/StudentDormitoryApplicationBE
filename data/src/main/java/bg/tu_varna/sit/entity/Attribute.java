@@ -10,20 +10,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Spouse extends PanacheEntityBase {
+public class Attribute extends PanacheEntityBase {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private String city;
-    private String street;
-    private Integer streetNumber;
-    private String phoneNumber;
+    private String description;
+    private String defaultValue;
 }
