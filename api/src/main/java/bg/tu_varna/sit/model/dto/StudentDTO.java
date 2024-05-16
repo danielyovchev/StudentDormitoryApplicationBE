@@ -1,19 +1,16 @@
-package bg.tu_varna.sit.model.application.student;
+package bg.tu_varna.sit.model.dto;
 
-import bg.tu_varna.sit.base.OperationInput;
 import bg.tu_varna.sit.model.enums.EducationForm;
 import bg.tu_varna.sit.model.enums.Faculty;
 import bg.tu_varna.sit.model.enums.Specialty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
-@Setter
+@Setter(AccessLevel.PRIVATE)
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SaveStudentApplicationRequest implements OperationInput {
+public class StudentDTO {
     private String name;
     private EducationForm educationForm;
     private Faculty faculty;

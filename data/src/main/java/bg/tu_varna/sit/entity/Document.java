@@ -10,6 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,4 +32,8 @@ public class Document extends PanacheEntityBase {
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
+
+    public static List<Document> getUnverifiedDocuments() {
+        return list("validated=false");
+    }
 }

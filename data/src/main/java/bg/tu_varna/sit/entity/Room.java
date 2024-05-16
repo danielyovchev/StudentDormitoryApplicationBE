@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Room extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private Integer roomNumber;
     private Integer capacity;
     @ManyToOne

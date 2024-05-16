@@ -3,28 +3,22 @@ package bg.tu_varna.sit;
 import bg.tu_varna.sit.base.Error;
 import bg.tu_varna.sit.model.application.documents.UploadDocumentRequest;
 import bg.tu_varna.sit.model.application.documents.UploadDocumentResponse;
-import bg.tu_varna.sit.model.application.family.get.GetStudentParentApplicationRequest;
-import bg.tu_varna.sit.model.application.family.get.GetStudentParentApplicationResponse;
 import bg.tu_varna.sit.model.application.family.save.*;
-import bg.tu_varna.sit.model.application.student.GetStudentApplicationRequest;
-import bg.tu_varna.sit.model.application.student.GetStudentApplicationResponse;
 import bg.tu_varna.sit.model.application.student.SaveStudentApplicationRequest;
 import bg.tu_varna.sit.model.application.student.SaveStudentApplicationResponse;
-import bg.tu_varna.sit.operation.student.GetStudentApplicationDataOperation;
-import bg.tu_varna.sit.operation.student.document.GetStudentDocumentOperation;
 import bg.tu_varna.sit.operation.student.SaveStudentApplicationDataOperation;
 import bg.tu_varna.sit.operation.student.document.UploadStudentDocumentOperation;
-import bg.tu_varna.sit.operation.student.family.GetStudentParentDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentChildDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentParentDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentSiblingDataOperation;
 import io.vavr.control.Either;
-import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
+import org.jboss.resteasy.reactive.MultipartForm;
 
 @Path("/upload")
 @RequiredArgsConstructor
@@ -69,8 +63,9 @@ public class StudentApplicationSaveResource {
     }
 
     @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/student/documents")
-    public Response saveStudentDocument(UploadDocumentRequest request) {
+    public Response saveStudentDocument(@MultipartForm UploadDocumentRequest request) {
         Either<Error, UploadDocumentResponse> process = uploadStudentDocumentOperation.process(request);
         return Response.ok().build();
     }
