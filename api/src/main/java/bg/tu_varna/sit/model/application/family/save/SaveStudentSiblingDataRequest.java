@@ -13,4 +13,5 @@ import lombok.Setter;
 public class SaveStudentSiblingDataRequest implements OperationInput {
     private String name;
     private Boolean isStudying;
+    private String studentPersonalNumber;
 }

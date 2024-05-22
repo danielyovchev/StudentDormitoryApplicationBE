@@ -18,13 +18,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
-import org.eclipse.microprofile.openapi.annotations.Operation;
-import org.eclipse.microprofile.openapi.annotations.media.Content;
-import org.eclipse.microprofile.openapi.annotations.media.Schema;
-import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-import org.jboss.resteasy.reactive.RestForm;
-import org.jboss.resteasy.reactive.multipart.FileUpload;
 
 @Path("/upload")
 @RequiredArgsConstructor
@@ -51,21 +44,36 @@ public class StudentApplicationSaveResource {
     @Path("/student/family")
     public Response saveStudentFamilyData(SaveStudentParentApplicationRequest request) {
         Either<Error, SaveStudentParentApplicationResponse> process = saveStudentParentDataOperation.process(request);
-        return Response.ok().build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getMessage()).build();
     }
 
     @POST
     @Path("/student/sibling")
     public Response saveStudentSiblingData(SaveStudentSiblingDataRequest request) {
         Either<Error, SaveStudentSiblingDataResponse> process = saveStudentSiblingDataOperation.process(request);
-        return Response.ok().build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getMessage()).build();
     }
 
     @POST
     @Path("/student/child")
     public Response saveStudentChildData(SaveStudentChildDataRequest request) {
         Either<Error, SaveStudentChildDataResponse> process = saveStudentChildDataOperation.process(request);
-        return Response.ok().build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getMessage()).build();
     }
 
     @POST
@@ -82,33 +90,5 @@ public class StudentApplicationSaveResource {
         return Response.ok()
                 .entity(process.get())
                 .build();
-    }
-
-    @POST
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Path("/student/documents/v2")
-    @Operation(summary = "Upload a student document", description = "Uploads a document for a student")
-    @RequestBody(
-            content = @Content(
-                    mediaType = MediaType.MULTIPART_FORM_DATA,
-                    schema = @Schema(
-                            implementation = UploadDocumentRequest.class
-                    )
-            )
-    )
-    @APIResponse(
-            responseCode = "200",
-            description = "Document uploaded successfully",
-            content = @Content(mediaType = "application/json")
-    )
-    @APIResponse(
-            responseCode = "500",
-            description = "Internal server error",
-            content = @Content(mediaType = "application/json")
-    )
-
-    public Response saveNew(@RestForm("file") FileUpload fileUpload) {
-        System.out.println(fileUpload.fileName());
-        return Response.ok().entity(fileUpload.uploadedFile().toFile().getName()).build();
     }
 }

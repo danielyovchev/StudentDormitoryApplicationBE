@@ -19,4 +19,5 @@ public class SaveStudentParentApplicationRequest implements OperationInput {
     private Integer entrance;
     private Integer apartment;
     private String phoneNumber;
+    private String studentPersonalNumber;
 }

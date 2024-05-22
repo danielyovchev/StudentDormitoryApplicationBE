@@ -1,10 +1,7 @@
 package bg.tu_varna.sit.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,4 +20,7 @@ public class Sibling extends PanacheEntityBase {
     private UUID id;
     private String name;
     private Boolean isStudying;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 }

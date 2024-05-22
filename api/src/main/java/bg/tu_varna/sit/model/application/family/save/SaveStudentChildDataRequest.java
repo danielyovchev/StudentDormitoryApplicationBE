@@ -15,4 +15,5 @@ import java.time.LocalDate;
 public class SaveStudentChildDataRequest implements OperationInput {
     private String name;
     private LocalDate birthDate;
+    private String studentPersonalNumber;
 }

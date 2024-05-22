@@ -6,13 +6,17 @@ import bg.tu_varna.sit.error.InternalError;
 import bg.tu_varna.sit.model.application.student.SaveStudentApplicationRequest;
 import bg.tu_varna.sit.model.application.student.SaveStudentApplicationResponse;
 import bg.tu_varna.sit.operation.student.SaveStudentApplicationDataOperation;
+import bg.tu_varna.sit.repository.StudentRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @ApplicationScoped
+@RequiredArgsConstructor
 public class SaveStudentApplicationDataService implements SaveStudentApplicationDataOperation {
+    private final StudentRepository studentRepository;
     @Transactional
     @Override
     public Either<Error, SaveStudentApplicationResponse> process(SaveStudentApplicationRequest input) {
@@ -27,7 +31,7 @@ public class SaveStudentApplicationDataService implements SaveStudentApplication
                     student.setStreet(input.getStreet());
                     student.setPersonalNumber(input.getPersonalNumber());
                     student.setPhoneNumber(input.getPhoneNumber());
-                    student.persist();
+                    studentRepository.persist(student);
                     return SaveStudentApplicationResponse.builder()
                             .message("Success")
                             .build();

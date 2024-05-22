@@ -1,15 +1,13 @@
 package bg.tu_varna.sit.model.application.family.save;
 
 import bg.tu_varna.sit.base.OperationResponse;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
-@Setter
+@Setter(AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class SaveStudentChildDataResponse implements OperationResponse {
     private String message;
 }
