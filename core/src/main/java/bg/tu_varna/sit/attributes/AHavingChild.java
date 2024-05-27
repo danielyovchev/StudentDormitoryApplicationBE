@@ -13,7 +13,7 @@ public class AHavingChild implements Attribute {
     private final AttributeRepository attributeRepository;
     @Override
     public Object getAttributeValue() {
-        Boolean havingChild = attributeRepository.find("");
+        //Boolean havingChild = attributeRepository.find("");
         return List.of();
     }
 }
