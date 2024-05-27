@@ -18,13 +18,12 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Optional;
-
 @ApplicationScoped
 @RequiredArgsConstructor
 public class SaveStudentChildDataService implements SaveStudentChildDataOperation {
     private final ChildRepository childRepository;
     private final StudentRepository studentRepository;
+
     @Transactional
     @Override
     public Either<Error, SaveStudentChildDataResponse> process(SaveStudentChildDataRequest input) {
@@ -39,7 +38,7 @@ public class SaveStudentChildDataService implements SaveStudentChildDataOperatio
                     return SaveStudentChildDataResponse.builder()
                             .message("Great success")
                             .build();
-        }).toEither()
+                }).toEither()
                 .mapLeft(Throwable -> {
                     if (Throwable instanceof StudentNotFoundException) {
                         return new StudentNotFoundError();

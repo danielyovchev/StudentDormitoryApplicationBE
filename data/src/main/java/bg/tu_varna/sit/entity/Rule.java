@@ -22,4 +22,5 @@ public class Rule extends PanacheEntityBase {
     private String name;
     private String description;
     private String defaultScore;
+    private Boolean isActive;
 }
