@@ -27,7 +27,6 @@ import java.util.List;
 public class RankStudentService implements RankStudentsOperation {
     private final RuleRepository ruleRepository;
     private final StudentRepository studentRepository;
-    private final AttributeRepository attributeRepository;
     private final StudentScoreRepository studentScoreRepository;
     private final RuleFactory ruleFactory;
 
