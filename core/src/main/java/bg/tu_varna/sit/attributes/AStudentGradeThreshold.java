@@ -8,12 +8,11 @@ import lombok.RequiredArgsConstructor;
 
 @ApplicationScoped
 @RequiredArgsConstructor
-public class AHavingChild implements Attribute<Boolean> {
+public class AStudentGradeThreshold implements Attribute<Double> {
     private final AttributeRepository attributeRepository;
 
     @Override
-    public Boolean getAttributeValue(Context context) {
-        //Boolean havingChild = attributeRepository.find("");
-        return true;
+    public Double getAttributeValue(Context context) {
+        return 5.0;
     }
 }

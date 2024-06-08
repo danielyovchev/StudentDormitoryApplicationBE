@@ -3,13 +3,13 @@ package bg.tu_varna.sit.attributes;
 import bg.tu_varna.sit.interfaces.Attribute;
 import bg.tu_varna.sit.services.context.Context;
 import jakarta.enterprise.context.ApplicationScoped;
-
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 
 @ApplicationScoped
-public class A2 implements Attribute<List<String>> {
+@RequiredArgsConstructor
+public class AStudentGrade implements Attribute<Double> {
     @Override
-    public List<String> getAttributeValue(Context context) {
-        return List.of();
+    public Double getAttributeValue(Context context) {
+        return context.getStudent().getGrade();
     }
 }
