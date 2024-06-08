@@ -26,4 +26,5 @@ public class StudentDTO {
     private Double grade;
     private Integer dormitoryNumber;
     private Integer roomNumber;
+    private String sex;
 }

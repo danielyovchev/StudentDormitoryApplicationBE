@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetStudentChildDataRequest implements OperationInput {
-    private String message;
+    private String studentNumber;
 }

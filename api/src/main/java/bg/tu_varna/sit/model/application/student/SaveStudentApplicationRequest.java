@@ -29,4 +29,5 @@ public class SaveStudentApplicationRequest implements OperationInput {
     private Double grade;
     private Integer dormitoryNumber;
     private Integer roomNumber;
+    private String sex;
 }

@@ -3,11 +3,13 @@ package bg.tu_varna.sit.model.application.family.get;
 import bg.tu_varna.sit.base.OperationInput;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class GetStudentParentApplicationRequest implements OperationInput {
-    private String studentId;
+    private String studentNumber;
 }

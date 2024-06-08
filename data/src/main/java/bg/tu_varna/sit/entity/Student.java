@@ -29,11 +29,13 @@ public class Student extends PanacheEntityBase {
     private String street;
     private Integer streetNumber;
     private Integer entrance;
+    private String speciality;
     private Double grade;
     private Integer apartment;
     @Column(unique = true)
     private String personalNumber;
     private String phoneNumber;
+    private String sex;
     @CreationTimestamp
     private LocalDate createdAt;
     @UpdateTimestamp

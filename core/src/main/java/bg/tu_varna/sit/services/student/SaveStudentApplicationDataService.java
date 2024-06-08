@@ -31,6 +31,7 @@ public class SaveStudentApplicationDataService implements SaveStudentApplication
                     student.setStreet(input.getStreet());
                     student.setPersonalNumber(input.getPersonalNumber());
                     student.setPhoneNumber(input.getPhoneNumber());
+                    student.setSex(input.getSex());
                     studentRepository.persist(student);
                     return SaveStudentApplicationResponse.builder()
                             .message("Success")

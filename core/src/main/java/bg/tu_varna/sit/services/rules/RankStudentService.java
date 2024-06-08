@@ -9,7 +9,6 @@ import bg.tu_varna.sit.interfaces.Rule;
 import bg.tu_varna.sit.model.ranking.RankStudentsRequest;
 import bg.tu_varna.sit.model.ranking.RankStudentsResponse;
 import bg.tu_varna.sit.operation.rules.RankStudentsOperation;
-import bg.tu_varna.sit.repository.AttributeRepository;
 import bg.tu_varna.sit.repository.RuleRepository;
 import bg.tu_varna.sit.repository.StudentRepository;
 import bg.tu_varna.sit.repository.StudentScoreRepository;
