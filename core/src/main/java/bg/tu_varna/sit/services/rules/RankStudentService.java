@@ -52,20 +52,12 @@ public class RankStudentService implements RankStudentsOperation {
                         }
                     });
                     return RankStudentsResponse.builder()
-                            .message("Ranked")
+                            .message("Ranking done")
                             .build();
                 }).toEither()
                 .mapLeft(Throwable -> new InternalError());
     }
 
-//    private Integer calculateScore(Context context, List<RuleEntity> activeRuleEntities) {
-//        return null;
-//
-//    }
-//
-//    private void computeAttributes(Context context) {
-//        List<Attribute> attributeList = attributeRepository.listAll();
-//    }
 
     private Context buildContext(Student student) {
         return Context.builder()
