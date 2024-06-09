@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.operation.rules;
+package bg.tu_varna.sit.operation.ranking;
 
 import bg.tu_varna.sit.base.Error;
 import bg.tu_varna.sit.base.OperationProcessor;

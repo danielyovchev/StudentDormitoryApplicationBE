@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.services.rules;
+package bg.tu_varna.sit.services.ranking;
 
 import bg.tu_varna.sit.base.Error;
 import bg.tu_varna.sit.entity.RuleEntity;
@@ -8,11 +8,12 @@ import bg.tu_varna.sit.error.InternalError;
 import bg.tu_varna.sit.interfaces.Rule;
 import bg.tu_varna.sit.model.ranking.RankStudentsRequest;
 import bg.tu_varna.sit.model.ranking.RankStudentsResponse;
-import bg.tu_varna.sit.operation.rules.RankStudentsOperation;
+import bg.tu_varna.sit.operation.ranking.RankStudentsOperation;
 import bg.tu_varna.sit.repository.RuleRepository;
 import bg.tu_varna.sit.repository.StudentRepository;
 import bg.tu_varna.sit.repository.StudentScoreRepository;
 import bg.tu_varna.sit.services.context.Context;
+import bg.tu_varna.sit.services.rules.RuleFactory;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import jakarta.enterprise.context.ApplicationScoped;
