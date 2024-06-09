@@ -2,6 +2,7 @@ package bg.tu_varna.sit.services.student;
 
 import bg.tu_varna.sit.base.Error;
 import bg.tu_varna.sit.entity.Student;
+import bg.tu_varna.sit.error.InternalError;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationRequest;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationResponse;
 import bg.tu_varna.sit.model.dto.StudentDTO;
@@ -29,7 +30,6 @@ public class GetStudentApplicationDataService implements GetStudentApplicationDa
                     //TODO refine fields
                     StudentDTO studentDTO = StudentDTO.builder()
                             .name(student.get().getName())
-                            .educationForm(student.get())
                             .grade(student.get().getGrade())
                             .sex(student.get().getSex())
                             .apartment(student.get().getApartment())
@@ -42,6 +42,6 @@ public class GetStudentApplicationDataService implements GetStudentApplicationDa
                             .build();
         })
                 .toEither()
-                .mapLeft();
+                .mapLeft(Throwable -> new InternalError());
     }
 }

@@ -30,7 +30,12 @@ public class StudentApplicationGetResource {
     public Response getStudentData(@PathParam("studentId") String studentId) {
         GetStudentApplicationRequest request = new GetStudentApplicationRequest(studentId);
         Either<Error, GetStudentApplicationResponse> process = getStudentApplicationDataOperation.process(request);
-        return Response.ok(process).build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getStudentDTO()).build();
     }
 
     @GET
@@ -38,7 +43,12 @@ public class StudentApplicationGetResource {
     public Response getStudentFamilyData(String studentId) {
         GetStudentParentApplicationRequest request = new GetStudentParentApplicationRequest(studentId);
         Either<Error, GetStudentParentApplicationResponse> process = getStudentParentDataOperation.process(request);
-        return Response.ok().build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getParents()).build();
     }
 
     @GET
@@ -46,15 +56,25 @@ public class StudentApplicationGetResource {
     public Response getStudentSiblingsData(String studentId) {
         GetStudentSiblingDataRequest request = new GetStudentSiblingDataRequest(studentId);
         Either<Error, GetStudentSiblingDataResponse> process = getStudentSiblingDataOperation.process(request);
-        return Response.ok().build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getSiblings()).build();
     }
 
     @GET
-    @Path("/student/{studentId}/childrem")
+    @Path("/student/{studentId}/children")
     public Response getStudentChildrenData(String studentId) {
         GetStudentChildDataRequest request = new GetStudentChildDataRequest(studentId);
         Either<Error, GetStudentChildDataResponse> process = getStudentChildDataOperation.process(request);
-        return Response.ok().build();
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getChildren()).build();
     }
 
     @GET
