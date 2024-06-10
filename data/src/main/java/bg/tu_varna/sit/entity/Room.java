@@ -16,7 +16,7 @@ public class Room extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer roomNumber;
+    private String roomNumber;
     private Integer capacity;
     @ManyToOne
     @JoinColumn(name = "dormitory_id")
