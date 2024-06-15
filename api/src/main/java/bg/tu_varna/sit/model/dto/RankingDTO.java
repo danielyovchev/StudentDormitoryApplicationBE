@@ -3,7 +3,7 @@ package bg.tu_varna.sit.model.dto;
 import lombok.*;
 
 @Getter
-@Setter(AccessLevel.PACKAGE)
+@Setter(AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

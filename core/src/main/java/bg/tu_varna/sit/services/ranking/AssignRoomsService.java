@@ -32,7 +32,7 @@ public class AssignRoomsService implements AssignRoomsOperation {
                     List<Student> students = studentScoreRepository.getOrderedStudentScores().stream()
                             .map(StudentScore::getStudent)
                             .toList();
-                    List<RoomOccupancy>
+
                 })
                 .toEither()
                 .mapLeft(Throwable -> new InternalError());

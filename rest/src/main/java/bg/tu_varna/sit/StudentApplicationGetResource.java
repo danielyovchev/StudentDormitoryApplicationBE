@@ -9,6 +9,7 @@ import bg.tu_varna.sit.operation.student.document.GetStudentDocumentOperation;
 import bg.tu_varna.sit.operation.student.family.GetStudentChildDataOperation;
 import bg.tu_varna.sit.operation.student.family.GetStudentParentDataOperation;
 import bg.tu_varna.sit.operation.student.family.GetStudentSiblingDataOperation;
+import bg.tu_varna.sit.operation.student.family.GetStudentSpouseDataOperation;
 import io.vavr.control.Either;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -23,6 +24,7 @@ public class StudentApplicationGetResource {
     private final GetStudentParentDataOperation getStudentParentDataOperation;
     private final GetStudentChildDataOperation getStudentChildDataOperation;
     private final GetStudentSiblingDataOperation getStudentSiblingDataOperation;
+    private final GetStudentSpouseDataOperation getStudentSpouseDataOperation;
     private final GetStudentDocumentOperation getStudentDocumentOperation;
 
     @GET
@@ -49,6 +51,19 @@ public class StudentApplicationGetResource {
                     .build();
         }
         return Response.ok(process.get().getParents()).build();
+    }
+
+    @GET
+    @Path("/student/{studentId}/spouse")
+    public Response getStudentSpouseData(String studentId) {
+        GetStudentSpouseApplicationRequest request = new GetStudentSpouseApplicationRequest(studentId);
+        Either<Error, GetStudentSpouseApplicationResponse> process = getStudentSpouseDataOperation.process(request);
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getSpouse()).build();
     }
 
     @GET

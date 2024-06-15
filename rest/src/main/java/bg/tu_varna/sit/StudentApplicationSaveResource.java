@@ -11,6 +11,7 @@ import bg.tu_varna.sit.operation.student.document.UploadStudentDocumentOperation
 import bg.tu_varna.sit.operation.student.family.SaveStudentChildDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentParentDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentSiblingDataOperation;
+import bg.tu_varna.sit.operation.student.family.SaveStudentSpouseDataOperation;
 import io.vavr.control.Either;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -27,6 +28,7 @@ public class StudentApplicationSaveResource {
     private final SaveStudentChildDataOperation saveStudentChildDataOperation;
     private final SaveStudentSiblingDataOperation saveStudentSiblingDataOperation;
     private final UploadStudentDocumentOperation uploadStudentDocumentOperation;
+    private final SaveStudentSpouseDataOperation saveStudentSpouseDataOperation;
 
     @POST
     @Path("/student/data")
@@ -44,6 +46,18 @@ public class StudentApplicationSaveResource {
     @Path("/student/family")
     public Response saveStudentFamilyData(SaveStudentParentApplicationRequest request) {
         Either<Error, SaveStudentParentApplicationResponse> process = saveStudentParentDataOperation.process(request);
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getMessage()).build();
+    }
+
+    @POST
+    @Path("/student/spouse")
+    public Response saveStudentSpouseData(SaveStudentSpouseApplicationRequest request) {
+        Either<Error, SaveStudentSpouseApplicationResponse> process = saveStudentSpouseDataOperation.process(request);
         if (process.isLeft()) {
             return Response.status(process.getLeft().getStatusCode())
                     .entity(process.getLeft().getMessage())
