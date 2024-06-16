@@ -1,7 +1,6 @@
 package bg.tu_varna.sit.services.ranking;
 
 import bg.tu_varna.sit.base.Error;
-import bg.tu_varna.sit.entity.RoomOccupancy;
 import bg.tu_varna.sit.entity.Student;
 import bg.tu_varna.sit.entity.StudentScore;
 import bg.tu_varna.sit.error.InternalError;
@@ -25,6 +24,7 @@ public class AssignRoomsService implements AssignRoomsOperation {
     private final StudentScoreRepository studentScoreRepository;
     private final PreferenceRepository preferenceRepository;
     private final RoomOccupancyRepository roomOccupancyRepository;
+
     @Override
     @Transactional
     public Either<Error, AssignRoomResponse> process(AssignRoomRequest input) {
@@ -32,7 +32,8 @@ public class AssignRoomsService implements AssignRoomsOperation {
                     List<Student> students = studentScoreRepository.getOrderedStudentScores().stream()
                             .map(StudentScore::getStudent)
                             .toList();
-
+                    return AssignRoomResponse.builder()
+                            .build();
                 })
                 .toEither()
                 .mapLeft(Throwable -> new InternalError());

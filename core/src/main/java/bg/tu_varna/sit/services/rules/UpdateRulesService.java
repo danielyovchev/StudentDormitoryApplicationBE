@@ -26,7 +26,7 @@ public class UpdateRulesService implements UpdateRulesOperation {
     @Transactional
     public Either<Error, UpdateRulesResponse> process(UpdateRulesRequest input) {
         return Try.of(() -> {
-                    List<RuleDTO> ruleDTOS = input.getRuleDTOS();
+                    List<RuleDTO> ruleDTOS = input.getRules();
                     ruleDTOS.forEach(ruleDTO -> {
                         Optional<RuleEntity> rule = Optional.ofNullable(ruleRepository.findById(ruleDTO.getId()));
                         if (rule.isPresent()) {
@@ -35,7 +35,6 @@ public class UpdateRulesService implements UpdateRulesOperation {
                             ruleEntity.setIsActive(ruleDTO.getIsActive());
                             ruleRepository.persist(ruleEntity);
                         }
-
                     });
                     return UpdateRulesResponse.builder()
                             .message("Rules are updated")

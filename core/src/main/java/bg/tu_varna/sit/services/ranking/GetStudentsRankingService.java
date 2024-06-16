@@ -26,6 +26,7 @@ public class GetStudentsRankingService implements GetStudentsRankingOperation {
                     List<StudentScore> studentScores = studentScoreRepository.listAll();
                     List<RankingDTO> rankings = studentScores.stream()
                             .map(el -> RankingDTO.builder()
+                                    .id(el.getId())
                                     .studentName(el.getStudent().getName())
                                     .score(el.getScore())
                                     .build())

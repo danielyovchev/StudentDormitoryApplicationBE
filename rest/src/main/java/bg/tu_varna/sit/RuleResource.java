@@ -8,9 +8,11 @@ import bg.tu_varna.sit.model.rule.UpdateRulesResponse;
 import bg.tu_varna.sit.operation.rules.GetRulesOperation;
 import bg.tu_varna.sit.operation.rules.UpdateRulesOperation;
 import io.vavr.control.Either;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +24,9 @@ public class RuleResource {
 
     @PUT
     @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response updateRules(UpdateRulesRequest request){
+        System.out.println("Received update request: " + request);
         Either<Error, UpdateRulesResponse> process = updateRulesOperation.process(request);
         if (process.isLeft()) {
             return Response.status(process.getLeft().getStatusCode())

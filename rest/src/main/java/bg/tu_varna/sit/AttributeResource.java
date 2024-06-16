@@ -14,7 +14,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
 
-@Path("/attribute")
+@Path("/attributes")
 @RequiredArgsConstructor
 public class AttributeResource {
     private final GetAttributesOperation getAttributesOperation;

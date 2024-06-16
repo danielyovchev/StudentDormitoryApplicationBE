@@ -7,10 +7,10 @@ import lombok.*;
 import java.util.List;
 
 @Getter
-@Setter(AccessLevel.PRIVATE)
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class UpdateRulesRequest implements OperationInput {
-    private List<RuleDTO> ruleDTOS;
+    private List<RuleDTO> rules;
 }
