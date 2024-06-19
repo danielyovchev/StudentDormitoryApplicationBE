@@ -30,6 +30,7 @@ public class Student extends PanacheEntityBase {
     private Integer streetNumber;
     private String entrance;
     private String speciality;
+    private String faculty;
     private Double grade;
     private Integer apartment;
     @Column(unique = true)

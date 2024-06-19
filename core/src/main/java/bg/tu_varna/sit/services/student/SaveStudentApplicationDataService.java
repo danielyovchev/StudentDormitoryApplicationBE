@@ -54,6 +54,8 @@ public class SaveStudentApplicationDataService implements SaveStudentApplication
         student.setPhoneNumber(input.getPhoneNumber());
         student.setSex(input.getSex());
         student.setStudentNumber(input.getStudentNumber());
+        student.setSpeciality(input.getSpecialty().toString());
+        student.setFaculty(input.getFaculty().toString());
     }
 
     private Student writeStudentData(SaveStudentApplicationRequest input) {
