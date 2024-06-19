@@ -25,6 +25,7 @@ public class SaveStudentApplicationRequest implements OperationInput {
     private Integer entrance;
     private Integer apartment;
     private String personalNumber;
+    private String studentNumber;
     private String phoneNumber;
     private Double grade;
     private Integer dormitoryNumber;

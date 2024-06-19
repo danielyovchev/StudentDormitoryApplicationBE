@@ -32,8 +32,4 @@ public class Document extends PanacheEntityBase {
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
-
-    public static List<Document> getUnverifiedDocuments() {
-        return list("validated=false");
-    }
 }

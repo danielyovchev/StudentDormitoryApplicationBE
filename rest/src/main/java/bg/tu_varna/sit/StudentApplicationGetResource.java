@@ -1,6 +1,8 @@
 package bg.tu_varna.sit;
 
 import bg.tu_varna.sit.base.Error;
+import bg.tu_varna.sit.model.application.documents.GetDocumentRequest;
+import bg.tu_varna.sit.model.application.documents.GetDocumentResponse;
 import bg.tu_varna.sit.model.application.family.get.*;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationRequest;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationResponse;
@@ -95,6 +97,13 @@ public class StudentApplicationGetResource {
     @GET
     @Path("/student/{studentId}/documents")
     public Response getStudentDocument(String studentId) {
-        return Response.ok().build();
+        GetDocumentRequest request = new GetDocumentRequest(studentId);
+        Either<Error, GetDocumentResponse> process = getStudentDocumentOperation.process(request);
+        if (process.isLeft()) {
+            return Response.status(process.getLeft().getStatusCode())
+                    .entity(process.getLeft().getMessage())
+                    .build();
+        }
+        return Response.ok(process.get().getDocuments()).build();
     }
 }

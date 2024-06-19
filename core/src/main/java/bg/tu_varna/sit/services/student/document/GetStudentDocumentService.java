@@ -8,6 +8,7 @@ import bg.tu_varna.sit.model.application.documents.GetDocumentRequest;
 import bg.tu_varna.sit.model.application.documents.GetDocumentResponse;
 import bg.tu_varna.sit.model.dto.DocumentDTO;
 import bg.tu_varna.sit.operation.student.document.GetStudentDocumentOperation;
+import bg.tu_varna.sit.repository.DocumentRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -19,11 +20,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetStudentDocumentService implements GetStudentDocumentOperation {
     private final DocumentMapper documentMapper;
-
+    private final DocumentRepository documentRepository;
     @Override
     public Either<Error, GetDocumentResponse> process(GetDocumentRequest input) {
         return Try.of(() -> {
-                    List<Document> documents = Document.getUnverifiedDocuments();
+                    List<Document> documents = documentRepository.getUnverifiedDocuments();
                     List<DocumentDTO> documentDTOS = documents.stream()
                             .map(documentMapper::toDocumentDTO)
                             .toList();
