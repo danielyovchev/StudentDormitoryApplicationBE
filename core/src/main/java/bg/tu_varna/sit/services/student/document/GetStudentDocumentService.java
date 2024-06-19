@@ -32,8 +32,6 @@ public class GetStudentDocumentService implements GetStudentDocumentOperation {
                             .documents(documentDTOS)
                             .build();
                 }).toEither()
-                .mapLeft(Throwable -> {
-                    return new InternalError();
-                });
+                .mapLeft(Throwable -> new InternalError());
     }
 }

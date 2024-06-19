@@ -35,8 +35,6 @@ public class SaveStudentDocumentService implements UploadStudentDocumentOperatio
                             .build();
                 })
                 .toEither()
-                .mapLeft(Throwable -> {
-                    return new InternalError();
-                });
+                .mapLeft(Throwable -> new InternalError());
     }
 }

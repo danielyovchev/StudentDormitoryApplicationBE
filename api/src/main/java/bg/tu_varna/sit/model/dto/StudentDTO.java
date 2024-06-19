@@ -19,10 +19,11 @@ public class StudentDTO {
     private String municipality;
     private String street;
     private Integer streetNumber;
-    private Integer entrance;
+    private String entrance;
     private Integer apartment;
     private String personalNumber;
     private String phoneNumber;
+    private String studentNumber;
     private Double grade;
     private Integer dormitoryNumber;
     private Integer roomNumber;

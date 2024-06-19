@@ -28,7 +28,7 @@ public class Student extends PanacheEntityBase {
     private String municipality;
     private String street;
     private Integer streetNumber;
-    private Integer entrance;
+    private String entrance;
     private String speciality;
     private Double grade;
     private Integer apartment;

@@ -22,7 +22,7 @@ public class SaveStudentApplicationRequest implements OperationInput {
     private String municipality;
     private String street;
     private Integer streetNumber;
-    private Integer entrance;
+    private String entrance;
     private Integer apartment;
     private String personalNumber;
     private String studentNumber;
