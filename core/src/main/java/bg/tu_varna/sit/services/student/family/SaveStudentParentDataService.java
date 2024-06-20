@@ -36,10 +36,11 @@ public class SaveStudentParentDataService implements SaveStudentParentDataOperat
                     parent.setStreet(input.getStreet());
                     parent.setStreetNumber(input.getStreetNumber());
                     parent.setPhoneNumber(input.getPhoneNumber());
+                    parent.setParentType(input.getParentType().getLabel());
                     parent.setStudent(student);
                     parentRepository.persist(parent);
                     return SaveStudentParentApplicationResponse.builder()
-                            .message("Good")
+                            .message("Data for parent saved")
                             .build();
                 })
                 .toEither()

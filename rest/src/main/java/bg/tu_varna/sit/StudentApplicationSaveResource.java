@@ -12,6 +12,7 @@ import bg.tu_varna.sit.operation.student.family.SaveStudentChildDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentParentDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentSiblingDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentSpouseDataOperation;
+import io.quarkus.logging.Log;
 import io.vavr.control.Either;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -95,6 +96,7 @@ public class StudentApplicationSaveResource {
     @Path("/student/documents")
     public Response saveStudentDocument(UploadDocumentRequest request) {
         System.out.println(request.getFileUpload().fileName());
+        Log.info("Request to upload student document for student: " + request.getStudentNumber());
         Either<Error, UploadDocumentResponse> process = uploadStudentDocumentOperation.process(request);
         if (process.isLeft()) {
             return Response.status(process.getLeft().getStatusCode())

@@ -35,7 +35,7 @@ public class SaveStudentSiblingDataService implements SaveStudentSiblingDataOper
                     sibling.setStudent(student);
                     siblingRepository.persist(sibling);
                     return SaveStudentSiblingDataResponse.builder()
-                            .message("Good")
+                            .message("Sibling data saved")
                             .build();
                 }).toEither()
                 .mapLeft(Throwable -> {

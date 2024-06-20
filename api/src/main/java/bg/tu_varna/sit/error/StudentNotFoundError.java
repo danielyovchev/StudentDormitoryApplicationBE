@@ -11,6 +11,6 @@ public class StudentNotFoundError implements Error {
 
     @Override
     public String getMessage() {
-        return "Student not found";
+        return "Student not found. Submit student data first";
     }
 }

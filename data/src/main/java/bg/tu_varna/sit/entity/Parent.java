@@ -19,6 +19,7 @@ public class Parent extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
+    private String parentType;
     private String city;
     private String street;
     private Integer streetNumber;

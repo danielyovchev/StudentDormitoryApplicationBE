@@ -36,7 +36,7 @@ public class SaveStudentChildDataService implements SaveStudentChildDataOperatio
                     child.setStudent(student);
                     childRepository.persist(child);
                     return SaveStudentChildDataResponse.builder()
-                            .message("Great success")
+                            .message("Child data saved")
                             .build();
                 }).toEither()
                 .mapLeft(Throwable -> {

@@ -7,6 +7,7 @@ import bg.tu_varna.sit.error.InternalError;
 import bg.tu_varna.sit.model.application.family.get.GetStudentParentApplicationRequest;
 import bg.tu_varna.sit.model.application.family.get.GetStudentParentApplicationResponse;
 import bg.tu_varna.sit.model.dto.ParentDTO;
+import bg.tu_varna.sit.model.enums.ParentType;
 import bg.tu_varna.sit.operation.student.family.GetStudentParentDataOperation;
 import bg.tu_varna.sit.repository.StudentRepository;
 import io.vavr.control.Either;
@@ -34,6 +35,7 @@ public class GetStudentParentDataService implements GetStudentParentDataOperatio
                     List<ParentDTO> parentDTOS = parents.stream()
                             .map(parent -> ParentDTO.builder()
                                     .name(parent.getName())
+                                    .parentType(ParentType.getByLabel(parent.getParentType()))
                                     .city(parent.getCity())
                                     .phoneNumber(parent.getPhoneNumber())
                                     .street(parent.getStreet())

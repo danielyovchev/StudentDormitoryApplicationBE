@@ -36,7 +36,7 @@ public class SaveStudentSpouseDataService implements SaveStudentSpouseDataOperat
                     spouse.setStudent(student);
                     spouseRepository.persist(spouse);
                     return SaveStudentSpouseApplicationResponse.builder()
-                            .message("Student spouse saved successfully")
+                            .message("Data for spouse saved")
                             .build();
                 }).toEither()
                 .mapLeft(Throwable -> {
