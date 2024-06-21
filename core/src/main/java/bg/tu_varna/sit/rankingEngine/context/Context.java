@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.services.context;
+package bg.tu_varna.sit.rankingEngine.context;
 
 import bg.tu_varna.sit.entity.Student;
 import lombok.*;

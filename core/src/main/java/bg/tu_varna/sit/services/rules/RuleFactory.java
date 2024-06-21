@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.services.rules;
 
-import bg.tu_varna.sit.annotations.RuleQualifierLiteral;
-import bg.tu_varna.sit.interfaces.Rule;
+import bg.tu_varna.sit.rankingEngine.annotations.RuleQualifierLiteral;
+import bg.tu_varna.sit.rankingEngine.interfaces.Rule;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Any;
 import jakarta.enterprise.inject.Instance;

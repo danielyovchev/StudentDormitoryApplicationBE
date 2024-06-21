@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.annotations;
+package bg.tu_varna.sit.rankingEngine.annotations;
 
 import jakarta.enterprise.util.AnnotationLiteral;
 import lombok.AllArgsConstructor;

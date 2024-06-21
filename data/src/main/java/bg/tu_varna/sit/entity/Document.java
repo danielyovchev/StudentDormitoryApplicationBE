@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.entity;
 
+import bg.tu_varna.sit.enums.DocumentEnum;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,8 @@ public class Document extends PanacheEntityBase {
     @Column
     private byte[] file;
     private Boolean validated;
+    @Enumerated(EnumType.STRING)
+    private DocumentEnum documentEnum;
     @CreationTimestamp
     private LocalDate uploadDate;
     @UpdateTimestamp

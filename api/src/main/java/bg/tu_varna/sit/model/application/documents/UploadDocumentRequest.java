@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.model.application.documents;
 
 import bg.tu_varna.sit.base.OperationInput;
+import bg.tu_varna.sit.model.enums.DocumentType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +19,6 @@ public class UploadDocumentRequest implements OperationInput {
     @RestForm("file")
     @Schema(type = SchemaType.STRING, format = "binary", description = "The file to upload")
     private FileUpload fileUpload;
+    private DocumentType documentType;
     private String studentNumber;
 }

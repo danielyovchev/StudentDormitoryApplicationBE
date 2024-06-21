@@ -5,10 +5,15 @@ import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
+import java.util.UUID;
 
 @ApplicationScoped
 public class DocumentRepository implements PanacheRepositoryBase<Document, Long> {
     public List<Document> getUnverifiedDocuments() {
         return list("validated=false");
+    }
+
+    public List<Document> getStudentVerifiedDocuments(UUID studentId) {
+        return list("validated=true and studentId = ?1", studentId);
     }
 }
