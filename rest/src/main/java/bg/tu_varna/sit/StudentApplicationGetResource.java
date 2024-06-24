@@ -104,6 +104,6 @@ public class StudentApplicationGetResource {
                     .entity(process.getLeft().getMessage())
                     .build();
         }
-        return Response.ok(process.get().getDocuments()).build();
+        return Response.ok(process.get()).build();
     }
 }

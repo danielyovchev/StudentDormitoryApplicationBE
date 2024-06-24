@@ -12,6 +12,7 @@ import bg.tu_varna.sit.repository.DocumentRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class GetStudentDocumentService implements GetStudentDocumentOperation {
     private final DocumentMapper documentMapper;
     private final DocumentRepository documentRepository;
     @Override
+    @Transactional
     public Either<Error, GetDocumentResponse> process(GetDocumentRequest input) {
         return Try.of(() -> {
                     List<Document> documents = documentRepository.getUnverifiedDocuments();
