@@ -14,6 +14,7 @@ import bg.tu_varna.sit.operation.student.family.SaveStudentSiblingDataOperation;
 import bg.tu_varna.sit.operation.student.family.SaveStudentSpouseDataOperation;
 import io.quarkus.logging.Log;
 import io.vavr.control.Either;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -33,6 +34,7 @@ public class StudentApplicationSaveResource {
 
     @POST
     @Path("/student/data")
+    @RolesAllowed("student")
     public Response saveStudentData(SaveStudentApplicationRequest request) {
         Either<Error, SaveStudentApplicationResponse> process = saveStudentApplicationDataOperation.process(request);
         if (process.isLeft()) {
@@ -45,6 +47,7 @@ public class StudentApplicationSaveResource {
 
     @POST
     @Path("/student/family")
+    @RolesAllowed("student")
     public Response saveStudentFamilyData(SaveStudentParentApplicationRequest request) {
         Either<Error, SaveStudentParentApplicationResponse> process = saveStudentParentDataOperation.process(request);
         if (process.isLeft()) {
@@ -57,6 +60,7 @@ public class StudentApplicationSaveResource {
 
     @POST
     @Path("/student/spouse")
+    @RolesAllowed("student")
     public Response saveStudentSpouseData(SaveStudentSpouseApplicationRequest request) {
         Either<Error, SaveStudentSpouseApplicationResponse> process = saveStudentSpouseDataOperation.process(request);
         if (process.isLeft()) {
@@ -69,6 +73,7 @@ public class StudentApplicationSaveResource {
 
     @POST
     @Path("/student/sibling")
+    @RolesAllowed("student")
     public Response saveStudentSiblingData(SaveStudentSiblingDataRequest request) {
         Either<Error, SaveStudentSiblingDataResponse> process = saveStudentSiblingDataOperation.process(request);
         if (process.isLeft()) {
@@ -81,6 +86,7 @@ public class StudentApplicationSaveResource {
 
     @POST
     @Path("/student/child")
+    @RolesAllowed("student")
     public Response saveStudentChildData(SaveStudentChildDataRequest request) {
         Either<Error, SaveStudentChildDataResponse> process = saveStudentChildDataOperation.process(request);
         if (process.isLeft()) {
@@ -94,6 +100,7 @@ public class StudentApplicationSaveResource {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/student/documents")
+    @RolesAllowed("student")
     public Response saveStudentDocument(UploadDocumentRequest request) {
         System.out.println(request.getFileUpload().fileName());
         Log.info("Request to upload student document for student: " + request.getStudentNumber());

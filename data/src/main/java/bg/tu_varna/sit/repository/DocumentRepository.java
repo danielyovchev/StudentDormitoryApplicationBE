@@ -14,6 +14,10 @@ public class DocumentRepository implements PanacheRepositoryBase<Document, Long>
     }
 
     public List<Document> getStudentVerifiedDocuments(UUID studentId) {
-        return list("validated=true and studentId = ?1", studentId);
+        return list("validated=true and student.id = ?1", studentId);
+    }
+
+    public List<Document> getStudentUnverifiedDocuments(UUID studentId) {
+        return list("validated=false and student.id = ?1", studentId);
     }
 }

@@ -8,6 +8,7 @@ import bg.tu_varna.sit.model.attribute.UpdateAttributesResponse;
 import bg.tu_varna.sit.operation.attribute.GetAttributesOperation;
 import bg.tu_varna.sit.operation.attribute.UpdateAttributesOperation;
 import io.vavr.control.Either;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -22,18 +23,20 @@ public class AttributeResource {
 
     @PUT
     @Path("/update")
+    @RolesAllowed("admin")
     public Response updateAttributes(UpdateAttributesRequest request) {
         Either<Error, UpdateAttributesResponse> process = updateAttributesOperation.process(request);
-        if (process.isLeft()) {
-            return Response.status(process.getLeft().getStatusCode())
-                    .entity(process.getLeft().getMessage())
-                    .build();
-        }
+            if (process.isLeft()) {
+                return Response.status(process.getLeft().getStatusCode())
+                        .entity(process.getLeft().getMessage())
+                        .build();
+            }
         return Response.ok(process.get().getMessage()).build();
     }
 
     @GET
     @Path("/get")
+    @RolesAllowed("admin")
     public Response getAttributes() {
         GetAttributesRequest request = new GetAttributesRequest();
         Either<Error, GetAttributesResponse> process = getAttributesOperation.process(request);

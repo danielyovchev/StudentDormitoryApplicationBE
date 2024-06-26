@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.entity;
 
-import bg.tu_varna.sit.enums.DocumentEnum;
+import bg.tu_varna.sit.enums.ApplicationStatus;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,25 +14,19 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Document extends PanacheEntityBase {
+public class Application extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Lob
-    @Column
-    private byte[] file;
-    private String fileName;
-    private Boolean validated;
-    @Enumerated(EnumType.STRING)
-    private DocumentEnum documentEnum;
+    private ApplicationStatus status;
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
     @CreationTimestamp
-    private LocalDate uploadDate;
+    private LocalDate applicationDate;
     @UpdateTimestamp
     private LocalDate updatedAt;
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
 }

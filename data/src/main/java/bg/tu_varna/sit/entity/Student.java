@@ -51,4 +51,6 @@ public class Student extends PanacheEntityBase {
     private List<Parent> parents;
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Spouse> spouses;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Application> applications;
 }

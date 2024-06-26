@@ -38,6 +38,7 @@ public class SaveStudentDocumentService implements UploadStudentDocumentOperatio
                     File file = input.getFileUpload().uploadedFile().toFile();
                     byte[] byteArray = Files.readAllBytes(file.toPath());
                     document.setFile(byteArray);
+                    document.setFileName(file.getName());
                     document.setValidated(Boolean.FALSE);
                     document.setStudent(student.get());
                     documentRepository.persist(document);
