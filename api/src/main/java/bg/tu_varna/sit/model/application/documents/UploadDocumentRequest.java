@@ -19,6 +19,8 @@ public class UploadDocumentRequest implements OperationInput {
     @RestForm("file")
     @Schema(type = SchemaType.STRING, format = "binary", description = "The file to upload")
     private FileUpload fileUpload;
+    @RestForm("documentType")
     private DocumentType documentType;
+    @RestForm("studentNumber")
     private String studentNumber;
 }

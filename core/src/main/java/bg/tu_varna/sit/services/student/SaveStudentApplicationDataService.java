@@ -23,7 +23,7 @@ public class SaveStudentApplicationDataService implements SaveStudentApplication
     @Override
     public Either<Error, SaveStudentApplicationResponse> process(SaveStudentApplicationRequest input) {
         return Try.of(() -> {
-                    Optional<Student> studentOptional = studentRepository.findByStudentPersonalNumber(input.getPersonalNumber());
+                    Optional<Student> studentOptional = studentRepository.findByStudentPersonalNumber(input.getStudentNumber());
                     if (studentOptional.isPresent()) {
                         Student student = studentOptional.get();
                         updateExistingStudentData(input, student);
@@ -46,6 +46,7 @@ public class SaveStudentApplicationDataService implements SaveStudentApplication
         student.setName(input.getName());
         student.setApartment(input.getApartment());
         student.setCity(input.getCity());
+        student.setGrade(input.getGrade());
         student.setEntrance(input.getEntrance());
         student.setMunicipality(input.getMunicipality());
         student.setStreetNumber(input.getStreetNumber());

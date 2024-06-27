@@ -10,8 +10,8 @@ import java.util.UUID;
 
 @ApplicationScoped
 public class StudentRepository implements PanacheRepositoryBase<Student, UUID> {
-    public Optional<Student> findByStudentPersonalNumber(String studentPersonalNumber) {
-        return find("personalNumber", studentPersonalNumber).firstResultOptional();
+    public Optional<Student> findByStudentPersonalNumber(String studentNumber) {
+        return find("studentNumber", studentNumber).firstResultOptional();
     }
 
     public List<Student> findUnverifiedStudents() {
