@@ -13,7 +13,6 @@ import bg.tu_varna.sit.operation.student.document.UploadStudentDocumentOperation
 import bg.tu_varna.sit.repository.DocumentRepository;
 import bg.tu_varna.sit.repository.StudentRepository;
 import bg.tu_varna.sit.service.AzureBlobService;
-import com.azure.storage.blob.BlobServiceClient;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -23,7 +22,6 @@ import lombok.RequiredArgsConstructor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -32,6 +30,7 @@ public class SaveStudentDocumentService implements UploadStudentDocumentOperatio
     private final DocumentRepository documentRepository;
     private final StudentRepository studentRepository;
     private final AzureBlobService azureBlobService;
+
     @Transactional
     @Override
     public Either<Error, UploadDocumentResponse> process(UploadDocumentRequest input) {
@@ -44,7 +43,6 @@ public class SaveStudentDocumentService implements UploadStudentDocumentOperatio
                     File file = input.getFileUpload().uploadedFile().toFile();
                     String contentType = input.getFileUpload().contentType();
                     try (InputStream inputStream = new FileInputStream(file)) {
-                        //byte[] byteArray = Files.readAllBytes(file.toPath());
                         String blobUrl = azureBlobService.uploadFile(inputStream, file.getName(), contentType);
                         document.setFileUrl(blobUrl);
                         document.setFileName(file.getName());
