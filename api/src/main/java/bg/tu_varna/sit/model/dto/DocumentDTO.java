@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DocumentDTO {
-    private byte[] file;
+    private String fileUrl;
     private String fileName;
     private String studentName;
     private String studentNumber;

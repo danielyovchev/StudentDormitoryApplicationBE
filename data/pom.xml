@@ -34,5 +34,10 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.azureservices</groupId>
+            <artifactId>quarkus-azure-storage-blob</artifactId>
+            <version>1.0.4</version>
+        </dependency>
     </dependencies>
 </project>

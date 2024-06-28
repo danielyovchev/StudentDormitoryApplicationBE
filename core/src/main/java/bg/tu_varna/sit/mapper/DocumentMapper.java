@@ -8,7 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class DocumentMapper {
     public DocumentDTO toDocumentDTO(Document document) {
         return DocumentDTO.builder()
-                .file(document.getFile())
+                .fileUrl(document.getFileUrl())
                 .studentNumber(document.getStudent().getPersonalNumber())
                 .studentName(document.getStudent().getName())
                 .build();

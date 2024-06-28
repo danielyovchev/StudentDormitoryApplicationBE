@@ -21,6 +21,7 @@ public class Application extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private ApplicationStatus status;
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
