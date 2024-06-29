@@ -102,7 +102,6 @@ public class StudentApplicationSaveResource {
     @Path("/student/documents")
     //@RolesAllowed("student")
     public Response saveStudentDocument(UploadDocumentRequest request) {
-        //no jpg
         Log.info("Request to upload student document for student: " + request.getStudentNumber());
         Either<Error, UploadDocumentResponse> process = uploadStudentDocumentOperation.process(request);
         if (process.isLeft()) {

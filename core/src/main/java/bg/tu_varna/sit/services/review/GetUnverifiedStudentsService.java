@@ -27,6 +27,7 @@ public class GetUnverifiedStudentsService implements GetUnverifiedStudentsOperat
                     List<ApplicationDTO> applications = unverifiedApplications.stream()
                             .map(app -> ApplicationDTO.builder()
                                     .studentName(app.getStudent().getName())
+                                    .studentId(app.getStudent().getStudentNumber())
                                     .applicationDate(app.getApplicationDate())
                                     .status(app.getStatus().toString())
                                     .build())

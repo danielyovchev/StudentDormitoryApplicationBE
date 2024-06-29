@@ -13,6 +13,7 @@ import bg.tu_varna.sit.operation.student.document.UploadStudentDocumentOperation
 import bg.tu_varna.sit.repository.DocumentRepository;
 import bg.tu_varna.sit.repository.StudentRepository;
 import bg.tu_varna.sit.service.AzureBlobService;
+import io.vavr.Tuple2;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -42,10 +43,14 @@ public class SaveStudentDocumentService implements UploadStudentDocumentOperatio
                     Document document = new Document();
                     File file = input.getFileUpload().uploadedFile().toFile();
                     String contentType = input.getFileUpload().contentType();
+                    String fileName = input.getFileUpload().fileName();
                     try (InputStream inputStream = new FileInputStream(file)) {
-                        String blobUrl = azureBlobService.uploadFile(inputStream, file.getName(), contentType);
+                        Tuple2<String, String> blobResponse = azureBlobService.uploadFile(inputStream, fileName, contentType);
+                        final String uniqueFileName = blobResponse._1;
+                        final String blobUrl = blobResponse._2;
                         document.setFileUrl(blobUrl);
-                        document.setFileName(file.getName());
+                        document.setUniqueName(uniqueFileName);
+                        document.setFileName(fileName);
                         document.setValidated(Boolean.FALSE);
                         document.setDocumentEnum(DocumentEnum.valueOf(input.getDocumentType().toString()));
                         document.setStudent(student.get());

@@ -22,6 +22,7 @@ public class Document extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fileUrl;
+    private String uniqueName;
     private String fileName;
     private Boolean validated;
     @Enumerated(EnumType.STRING)

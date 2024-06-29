@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class ApplicationDTO {
     private String studentName;
+    private String studentId;
     private LocalDate applicationDate;
     private String status;
 }
