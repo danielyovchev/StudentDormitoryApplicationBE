@@ -9,8 +9,8 @@ import java.util.UUID;
 
 @ApplicationScoped
 public class DocumentRepository implements PanacheRepositoryBase<Document, Long> {
-    public List<Document> getUnverifiedDocuments() {
-        return list("validated=false");
+    public List<Document> getUnverifiedDocuments(String studentNumber) {
+        return list("validated=false and student.studentNumber = ?1", studentNumber);
     }
 
     public List<Document> getStudentVerifiedDocuments(UUID studentId) {

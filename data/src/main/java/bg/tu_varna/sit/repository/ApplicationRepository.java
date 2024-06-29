@@ -7,6 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @ApplicationScoped
 public class ApplicationRepository implements PanacheRepositoryBase<Application, Long> {
@@ -16,5 +17,9 @@ public class ApplicationRepository implements PanacheRepositoryBase<Application,
 
     public Optional<Application> findByStudentNumber(String studentNumber) {
         return find("student.studentNumber", studentNumber).firstResultOptional();
+    }
+
+    public Optional<Application> findByStudentId(UUID studentId) {
+        return find("student.id", studentId).firstResultOptional();
     }
 }

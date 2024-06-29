@@ -26,7 +26,7 @@ public class GetStudentDocumentService implements GetStudentDocumentOperation {
     @Transactional
     public Either<Error, GetDocumentResponse> process(GetDocumentRequest input) {
         return Try.of(() -> {
-                    List<Document> documents = documentRepository.getUnverifiedDocuments();
+                    List<Document> documents = documentRepository.getUnverifiedDocuments(input.getStudentId());
                     List<DocumentDTO> documentDTOS = documents.stream()
                             .map(documentMapper::toDocumentDTO)
                             .toList();
