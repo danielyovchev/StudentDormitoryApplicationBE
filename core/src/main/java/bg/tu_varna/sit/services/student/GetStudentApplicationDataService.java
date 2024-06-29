@@ -6,6 +6,8 @@ import bg.tu_varna.sit.error.InternalError;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationRequest;
 import bg.tu_varna.sit.model.application.student.GetStudentApplicationResponse;
 import bg.tu_varna.sit.model.dto.StudentDTO;
+import bg.tu_varna.sit.model.enums.Faculty;
+import bg.tu_varna.sit.model.enums.Specialty;
 import bg.tu_varna.sit.operation.student.GetStudentApplicationDataOperation;
 import bg.tu_varna.sit.repository.StudentRepository;
 import io.vavr.control.Either;
@@ -36,6 +38,14 @@ public class GetStudentApplicationDataService implements GetStudentApplicationDa
                             .city(student.get().getCity())
                             .entrance(student.get().getEntrance())
                             .municipality(student.get().getMunicipality())
+                            .studentNumber(student.get().getStudentNumber())
+                            .street(student.get().getStreet())
+                            .streetNumber(student.get().getStreetNumber())
+                            .personalId(student.get().getPersonalNumber())
+                            .phoneNumber(student.get().getPhoneNumber())
+                            .faculty(Faculty.valueOf(student.get().getFaculty()))
+                            .specialty(Specialty.valueOf(student.get().getSpeciality()))
+                            .examsToRetake(student.get().getExamsToRetake())
                             .build();
                     return GetStudentApplicationResponse.builder()
                             .studentDTO(studentDTO)

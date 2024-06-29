@@ -38,6 +38,7 @@ public class Student extends PanacheEntityBase {
     @Column(unique = true)
     private String studentNumber;
     private String phoneNumber;
+    private Integer examsToRetake;
     private String sex;
     @CreationTimestamp
     private LocalDate createdAt;

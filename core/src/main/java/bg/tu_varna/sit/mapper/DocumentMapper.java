@@ -15,6 +15,7 @@ public class DocumentMapper {
         final String fullUrl = document.getFileUrl() + "?" +
                 azureBlobService.getSasToken(document.getUniqueName());
         return DocumentDTO.builder()
+                .id(document.getId())
                 .fileUrl(fullUrl)
                 .fileName(document.getFileName())
                 .studentNumber(document.getStudent().getPersonalNumber())

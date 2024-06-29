@@ -21,11 +21,12 @@ public class StudentDTO {
     private Integer streetNumber;
     private String entrance;
     private Integer apartment;
-    private String personalNumber;
+    private String personalId;
     private String phoneNumber;
     private String studentNumber;
     private Double grade;
     private Integer dormitoryNumber;
     private Integer roomNumber;
     private String sex;
+    private Integer examsToRetake;
 }
