@@ -10,7 +10,6 @@ import lombok.*;
 public class SpouseDTO {
     private String name;
     private String city;
-    private String street;
-    private Integer streetNumber;
+    private String address;
     private String phoneNumber;
 }

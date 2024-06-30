@@ -20,8 +20,7 @@ public class Spouse extends PanacheEntityBase {
     private UUID id;
     private String name;
     private String city;
-    private String street;
-    private Integer streetNumber;
+    private String address;
     private String phoneNumber;
     @ManyToOne
     @JoinColumn(name = "student_id")

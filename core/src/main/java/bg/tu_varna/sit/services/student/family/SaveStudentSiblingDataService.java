@@ -27,7 +27,7 @@ public class SaveStudentSiblingDataService implements SaveStudentSiblingDataOper
     @Override
     public Either<Error, SaveStudentSiblingDataResponse> process(SaveStudentSiblingDataRequest input) {
         return Try.of(() -> {
-                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentPersonalNumber()))
+                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentNumber()))
                             .getOrElseThrow(StudentNotFoundException::new);
                     Sibling sibling = new Sibling();
                     sibling.setName(input.getName());

@@ -38,8 +38,7 @@ public class GetStudentParentDataService implements GetStudentParentDataOperatio
                                     .parentType(ParentType.getByLabel(parent.getParentType()))
                                     .city(parent.getCity())
                                     .phoneNumber(parent.getPhoneNumber())
-                                    .street(parent.getStreet())
-                                    .streetNumber(parent.getStreetNumber())
+                                    .address(parent.getAddress())
                                     .build())
                             .toList();
                     return GetStudentParentApplicationResponse.builder()

@@ -21,8 +21,7 @@ public class Parent extends PanacheEntityBase {
     private String name;
     private String parentType;
     private String city;
-    private String street;
-    private Integer streetNumber;
+    private String address;
     private String phoneNumber;
     @ManyToOne
     @JoinColumn(name = "student_id")

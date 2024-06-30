@@ -15,6 +15,7 @@ import io.vavr.control.Either;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @ApplicationScoped
@@ -23,16 +24,16 @@ public class SaveStudentSpouseDataService implements SaveStudentSpouseDataOperat
     private final StudentRepository studentRepository;
     private final SpouseRepository spouseRepository;
     @Override
+    @Transactional
     public Either<Error, SaveStudentSpouseApplicationResponse> process(SaveStudentSpouseApplicationRequest input) {
         return Try.of(() -> {
-                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentPersonalNumber()))
+                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentNumber()))
                             .getOrElseThrow(StudentNotFoundException::new);
                     Spouse spouse = new Spouse();
                     spouse.setName(input.getName());
                     spouse.setCity(input.getCity());
-                    spouse.setStreet(input.getStreet());
+                    spouse.setAddress(input.getAddress());
                     spouse.setPhoneNumber(input.getPhoneNumber());
-                    spouse.setStreetNumber(input.getStreetNumber());
                     spouse.setStudent(student);
                     spouseRepository.persist(spouse);
                     return SaveStudentSpouseApplicationResponse.builder()

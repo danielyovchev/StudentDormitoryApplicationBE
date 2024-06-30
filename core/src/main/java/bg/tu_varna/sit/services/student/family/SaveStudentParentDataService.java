@@ -23,18 +23,16 @@ import lombok.RequiredArgsConstructor;
 public class SaveStudentParentDataService implements SaveStudentParentDataOperation {
     private final ParentRepository parentRepository;
     private final StudentRepository studentRepository;
-    // TODO decide for building number and other fields
     @Transactional
     @Override
     public Either<Error, SaveStudentParentApplicationResponse> process(SaveStudentParentApplicationRequest input) {
         return Try.of(() -> {
-                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentPersonalNumber()))
+                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentNumber()))
                             .getOrElseThrow(StudentNotFoundException::new);
                     Parent parent = new Parent();
                     parent.setName(input.getName());
                     parent.setCity(input.getCity());
-                    parent.setStreet(input.getStreet());
-                    parent.setStreetNumber(input.getStreetNumber());
+                    parent.setAddress(input.getAddress());
                     parent.setPhoneNumber(input.getPhoneNumber());
                     parent.setParentType(input.getParentType().getLabel());
                     parent.setStudent(student);

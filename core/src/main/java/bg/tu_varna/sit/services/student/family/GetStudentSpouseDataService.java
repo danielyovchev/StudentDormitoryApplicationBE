@@ -38,9 +38,8 @@ public class GetStudentSpouseDataService implements GetStudentSpouseDataOperatio
                     SpouseDTO spouseDTO = SpouseDTO.builder()
                             .name(spouse.get().getName())
                             .city(spouse.get().getCity())
-                            .streetNumber(spouse.get().getStreetNumber())
                             .phoneNumber(spouse.get().getPhoneNumber())
-                            .street(spouse.get().getStreet())
+                            .address(spouse.get().getAddress())
                             .build();
                     return GetStudentSpouseApplicationResponse.builder()
                             .spouse(spouseDTO)

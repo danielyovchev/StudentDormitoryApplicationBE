@@ -28,7 +28,7 @@ public class SaveStudentChildDataService implements SaveStudentChildDataOperatio
     @Override
     public Either<Error, SaveStudentChildDataResponse> process(SaveStudentChildDataRequest input) {
         return Try.of(() -> {
-                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentPersonalNumber()))
+                    Student student = Option.ofOptional(studentRepository.findByStudentPersonalNumber(input.getStudentNumber()))
                             .getOrElseThrow(StudentNotFoundException::new);
                     Child child = new Child();
                     child.setName(input.getName());

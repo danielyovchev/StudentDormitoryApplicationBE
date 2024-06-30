@@ -46,7 +46,7 @@ public class StudentApplicationSaveResource {
     }
 
     @POST
-    @Path("/student/family")
+    @Path("/student/parent")
     @RolesAllowed("student")
     public Response saveStudentFamilyData(SaveStudentParentApplicationRequest request) {
         Either<Error, SaveStudentParentApplicationResponse> process = saveStudentParentDataOperation.process(request);

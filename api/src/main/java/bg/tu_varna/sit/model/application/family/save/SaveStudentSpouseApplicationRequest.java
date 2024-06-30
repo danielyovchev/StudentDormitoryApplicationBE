@@ -13,11 +13,7 @@ import lombok.Setter;
 public class SaveStudentSpouseApplicationRequest implements OperationInput {
     private String name;
     private String city;
-    private String street;
-    private Integer streetNumber;
-    private Integer buildingNumber;
-    private Integer entrance;
-    private Integer apartment;
+    private String address;
     private String phoneNumber;
-    private String studentPersonalNumber;
+    private String studentNumber;
 }

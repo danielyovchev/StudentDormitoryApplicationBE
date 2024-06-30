@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ParentType {
     MOTHER("mother"),
-    FATHER("mother");
+    FATHER("father");
     private final String label;
 
     public static ParentType getByLabel(String label) {

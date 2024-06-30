@@ -14,12 +14,8 @@ import lombok.Setter;
 public class SaveStudentParentApplicationRequest implements OperationInput {
     private String name;
     private String city;
-    private String street;
+    private String address;
     private ParentType parentType;
-    private Integer streetNumber;
-    private Integer buildingNumber;
-    private Integer entrance;
-    private Integer apartment;
     private String phoneNumber;
-    private String studentPersonalNumber;
+    private String studentNumber;
 }

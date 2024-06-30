@@ -11,8 +11,7 @@ import lombok.*;
 public class ParentDTO {
     private String name;
     private String city;
-    private String street;
+    private String address;
     private ParentType parentType;
-    private Integer streetNumber;
     private String phoneNumber;
 }
