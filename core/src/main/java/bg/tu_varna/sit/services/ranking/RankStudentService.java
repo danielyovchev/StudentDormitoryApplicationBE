@@ -35,7 +35,7 @@ public class RankStudentService implements RankStudentsOperation {
     public Either<Error, RankStudentsResponse> process(RankStudentsRequest input) {
         return Try.of(() -> {
                     List<RuleEntity> activeRuleEntities = ruleRepository.findAllActiveRules();
-                    List<Student> students = studentRepository.listAll();
+                    List<Student> students = studentRepository.findVerifiedStudents();
                     students.forEach(student -> {
                         int score = 0;
                         final Context context = buildContext(student);

@@ -18,7 +18,7 @@ public class ANoSpouse implements Attribute<Boolean> {
     @Override
     public Boolean getAttributeValue(Context context) {
         Student student = context.getStudent();
-        Optional<Spouse> spouse = spouseRepository.find("studentId", student.getId()).firstResultOptional();
+        Optional<Spouse> spouse = spouseRepository.find("student.id", student.getId()).firstResultOptional();
         return spouse.isEmpty();
     }
 }

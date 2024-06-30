@@ -11,6 +11,6 @@ public class InternalError implements Error {
 
     @Override
     public String getMessage() {
-        return "Document not found";
+        return "Service unavailable";
     }
 }

@@ -18,7 +18,7 @@ public class AHavingChild implements Attribute<Boolean> {
     @Override
     public Boolean getAttributeValue(Context context) {
         Student student = context.getStudent();
-        Optional<Child> child = childRepository.find("studentId", student.getId()).firstResultOptional();
+        Optional<Child> child = childRepository.find("student.id", student.getId()).firstResultOptional();
         return child.isPresent();
     }
 }

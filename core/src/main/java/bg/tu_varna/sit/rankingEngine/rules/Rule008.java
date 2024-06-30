@@ -12,6 +12,6 @@ import lombok.RequiredArgsConstructor;
 public class Rule008 implements Rule {
     @Override
     public Boolean evaluate(Context context) {
-        return null;
+        return false;
     }
 }
