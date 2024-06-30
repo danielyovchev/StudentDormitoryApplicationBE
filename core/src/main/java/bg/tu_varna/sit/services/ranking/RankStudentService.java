@@ -43,12 +43,13 @@ public class RankStudentService implements RankStudentsOperation {
                             Rule rule = ruleFactory.mapRule(ruleEntity.getName());
                             if (rule.evaluate(context)) {
                                 score += ruleEntity.getDefaultScore();
-                                StudentScore studentScore = new StudentScore();
-                                studentScore.setScore(score);
-                                studentScore.setStudent(student);
-                                studentScoreRepository.persist(studentScore);
+
                             }
                         }
+                        StudentScore studentScore = new StudentScore();
+                        studentScore.setScore(score);
+                        studentScore.setStudent(student);
+                        studentScoreRepository.persist(studentScore);
                     });
                     return RankStudentsResponse.builder()
                             .message("Ranking done")

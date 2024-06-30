@@ -9,5 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AssignRoomResponse implements OperationResponse {
-    private String roomName;
+    private String message;
 }
