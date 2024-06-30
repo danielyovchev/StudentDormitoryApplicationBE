@@ -29,7 +29,6 @@ public class GetStudentApplicationDataService implements GetStudentApplicationDa
                         return GetStudentApplicationResponse.builder()
                                 .build();
                     }
-                    //TODO refine fields
                     StudentDTO studentDTO = StudentDTO.builder()
                             .name(student.get().getName())
                             .grade(student.get().getGrade())
