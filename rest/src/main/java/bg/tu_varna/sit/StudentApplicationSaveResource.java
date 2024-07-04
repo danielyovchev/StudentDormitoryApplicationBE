@@ -100,7 +100,7 @@ public class StudentApplicationSaveResource {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/student/documents")
-    //@RolesAllowed("student")
+    @RolesAllowed("student")
     public Response saveStudentDocument(UploadDocumentRequest request) {
         Log.info("Request to upload student document for student: " + request.getStudentNumber());
         Either<Error, UploadDocumentResponse> process = uploadStudentDocumentOperation.process(request);

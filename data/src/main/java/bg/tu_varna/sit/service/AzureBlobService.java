@@ -7,7 +7,5 @@ import java.io.InputStream;
 public interface AzureBlobService {
     Tuple2<String, String> uploadFile(InputStream fileInputStream, String fileName, String contentType);
 
-    InputStream downloadFile(String fileName);
-
     String getSasToken(String fileName);
 }

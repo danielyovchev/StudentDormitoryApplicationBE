@@ -20,10 +20,7 @@ public class SaveStudentApplicationRequest implements OperationInput {
     private Specialty specialty;
     private String city;
     private String municipality;
-    private String street;
-    private Integer streetNumber;
-    private String entrance;
-    private Integer apartment;
+    private String address;
     private String personalNumber;
     private String studentNumber;
     private String phoneNumber;

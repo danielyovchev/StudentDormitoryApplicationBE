@@ -34,13 +34,6 @@ public class AzureBlobServiceImpl implements AzureBlobService {
     }
 
     @Override
-    public InputStream downloadFile(String fileName) {
-        BlobContainerClient blobContainerClient = blobServiceClient.getBlobContainerClient(containerName);
-        BlobClient blobClient = blobContainerClient.getBlobClient(fileName);
-        return blobClient.openInputStream();
-    }
-
-    @Override
     public String getSasToken(String blobName) {
         BlobContainerClient blobContainerClient = blobServiceClient.getBlobContainerClient(containerName);
         BlobClient blobClient = blobContainerClient.getBlobClient(blobName);

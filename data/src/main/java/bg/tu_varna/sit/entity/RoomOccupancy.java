@@ -11,11 +11,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class RoomOccupancy extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

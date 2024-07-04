@@ -29,7 +29,7 @@ public class RuleResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @RolesAllowed("admin")
     public Response updateRules(UpdateRulesRequest request){
-        System.out.println("Received update request: " + request);
+        Log.info("Received update request for rules: " + request);
         Either<Error, UpdateRulesResponse> process = updateRulesOperation.process(request);
         if (process.isLeft()) {
             return Response.status(process.getLeft().getStatusCode())

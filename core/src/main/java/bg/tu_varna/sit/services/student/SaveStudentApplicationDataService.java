@@ -80,13 +80,10 @@ public class SaveStudentApplicationDataService implements SaveStudentApplication
 
     private void updateExistingStudentData(SaveStudentApplicationRequest input, Student student) {
         student.setName(input.getName());
-        student.setApartment(input.getApartment());
         student.setCity(input.getCity());
         student.setGrade(input.getGrade());
-        student.setEntrance(input.getEntrance());
         student.setMunicipality(input.getMunicipality());
-        student.setStreetNumber(input.getStreetNumber());
-        student.setStreet(input.getStreet());
+        student.setAddress(input.getAddress());
         student.setPersonalNumber(input.getPersonalNumber());
         student.setPhoneNumber(input.getPhoneNumber());
         student.setSex(input.getSex());

@@ -37,7 +37,6 @@ public class ValidateStudentDocumentService implements ValidateStudentDocumentOp
                     if (areAllDocumentsVerified(studentId)) {
                         markApplicationAsSuccessful(studentId);
                     }
-
                     return new ValidateDocumentResponse("Document validated");
                 }).toEither()
                 .mapLeft(this::mapToError);
@@ -67,5 +66,4 @@ public class ValidateStudentDocumentService implements ValidateStudentDocumentOp
         }
         return new InternalError();
     }
-
 }
