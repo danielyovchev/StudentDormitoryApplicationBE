@@ -36,8 +36,8 @@ public class AssignRoomsService implements AssignRoomsOperation {
                             .map(StudentScore::getStudent)
                             .toList();
                     List<Preference> preferences = preferenceRepository.listAll();
-                    List<RoomOccupancy> currentRoomOccupancies = roomOccupancyRepository.listAll();
-
+                    List<RoomOccupancy> currentRoomOccupancies = roomOccupancyRepository.findEndDateBeforeCurrentDate();
+                    roomOccupancyRepository.deleteAll();
                     // Create maps for quick lookups
                     Map<UUID, Preference> studentPreferences = preferences.stream()
                             .collect(Collectors.toMap(p -> p.getStudent().getId(), preference -> preference));
@@ -97,8 +97,8 @@ public class AssignRoomsService implements AssignRoomsOperation {
                 roomOccupancy.setRoom(assignedRoom);
                 roomOccupancy.setStudent(student);
                 roomOccupancy.setStartDate(LocalDate.now());
+                roomOccupancy.setEndDate(LocalDate.now().plusYears(1));
                 roomOccupancyRepository.persist(roomOccupancy);
-
                 roomOccupancies.get(assignedRoom.getId()).add(roomOccupancy);
             } else {
                 throw new RuntimeException("No available rooms for student: " + student.getId());

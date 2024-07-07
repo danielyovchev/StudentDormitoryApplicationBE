@@ -55,7 +55,7 @@ public class StudentApplicationSaveResource {
                     .entity(process.getLeft().getMessage())
                     .build();
         }
-        return Response.ok(process.get().getMessage()).build();
+        return Response.ok(process.get()).build();
     }
 
     @POST
@@ -68,7 +68,7 @@ public class StudentApplicationSaveResource {
                     .entity(process.getLeft().getMessage())
                     .build();
         }
-        return Response.ok(process.get().getMessage()).build();
+        return Response.ok(process.get()).build();
     }
 
     @POST
@@ -81,7 +81,7 @@ public class StudentApplicationSaveResource {
                     .entity(process.getLeft().getMessage())
                     .build();
         }
-        return Response.ok(process.get().getMessage()).build();
+        return Response.ok(process.get()).build();
     }
 
     @POST
@@ -94,7 +94,7 @@ public class StudentApplicationSaveResource {
                     .entity(process.getLeft().getMessage())
                     .build();
         }
-        return Response.ok(process.get().getMessage()).build();
+        return Response.ok(process.get()).build();
     }
 
     @POST

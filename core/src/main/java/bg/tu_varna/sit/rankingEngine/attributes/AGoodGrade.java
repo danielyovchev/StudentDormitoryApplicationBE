@@ -11,12 +11,12 @@ import java.util.Optional;
 
 @ApplicationScoped
 @RequiredArgsConstructor
-public class AVeryGoodGrade implements Attribute<Optional<Double>> {
+public class AGoodGrade implements Attribute<Optional<Double>> {
     private final AttributeRepository attributeRepository;
 
     @Override
     public Optional<Double> getAttributeValue(Context context) {
-        Optional<bg.tu_varna.sit.entity.Attribute> attribute = attributeRepository.find("name", AVeryGoodGrade.class.getSimpleName()).firstResultOptional();
+        Optional<bg.tu_varna.sit.entity.Attribute> attribute = attributeRepository.find("name", AGoodGrade.class.getSimpleName()).firstResultOptional();
         if (attribute.isEmpty()) {
             return Optional.empty();
         }

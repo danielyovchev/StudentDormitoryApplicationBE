@@ -36,7 +36,7 @@ public class RuleResource {
                     .entity(process.getLeft().getMessage())
                     .build();
         }
-        return Response.ok(process.get().getMessage()).build();
+        return Response.ok(process.get()).build();
     }
 
     @GET

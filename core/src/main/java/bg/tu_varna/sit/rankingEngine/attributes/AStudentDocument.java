@@ -9,12 +9,12 @@ import jakarta.enterprise.context.ApplicationScoped;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Optional;
 
 @ApplicationScoped
 @RequiredArgsConstructor
 public class AStudentDocument implements Attribute<List<Document>> {
     private final DocumentRepository documentRepository;
+
     @Override
     public List<Document> getAttributeValue(Context context) {
         Student student = context.getStudent();

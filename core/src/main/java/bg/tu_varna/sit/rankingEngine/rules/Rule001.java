@@ -4,6 +4,7 @@ import bg.tu_varna.sit.entity.Document;
 import bg.tu_varna.sit.enums.DocumentEnum;
 import bg.tu_varna.sit.rankingEngine.annotations.RuleQualifier;
 import bg.tu_varna.sit.rankingEngine.attributes.AHavingChild;
+import bg.tu_varna.sit.rankingEngine.attributes.ANoSpouse;
 import bg.tu_varna.sit.rankingEngine.attributes.AStudentDocument;
 import bg.tu_varna.sit.rankingEngine.context.Context;
 import bg.tu_varna.sit.rankingEngine.interfaces.Rule;
@@ -18,6 +19,7 @@ import java.util.List;
 public class Rule001 implements Rule {
     private final AHavingChild aHavingChild;
     private final AStudentDocument studentDocument;
+    private final ANoSpouse spouse;
     @Override
     public Boolean evaluate(Context context) {
         List<Document> documents = studentDocument.getAttributeValue(context);
@@ -25,6 +27,7 @@ public class Rule001 implements Rule {
                 .map(Document::getDocumentEnum)
                 .anyMatch(d -> d.equals(DocumentEnum.CHILD));
         Boolean child = aHavingChild.getAttributeValue(context);
-        return child && validDocuments;
+        Boolean noSpouse = spouse.getAttributeValue(context);
+        return child && validDocuments && !noSpouse;
     }
 }
