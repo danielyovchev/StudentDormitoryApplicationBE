@@ -40,7 +40,7 @@ public class SaveStudentApplicationService implements SaveStudentApplicationOper
                     List<Document> documents = documentRepository.getStudentUnverifiedDocuments(student.get().getId());
                     Application application = new Application();
                     application.setStudent(student.get());
-                    if (student.get().getCity().equalsIgnoreCase("Varna")) {
+                    if (student.get().getCity().equalsIgnoreCase("Varna") || student.get().getCity().equalsIgnoreCase("Варна")) {
                         application.setStatus(ApplicationStatus.REJECTED);
                         applicationRepository.persist(application);
                         return SaveApplicationResponse.builder()
