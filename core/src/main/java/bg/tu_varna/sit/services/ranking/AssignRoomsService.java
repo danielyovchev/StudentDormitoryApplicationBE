@@ -38,7 +38,7 @@ public class AssignRoomsService implements AssignRoomsOperation {
                     List<Preference> preferences = preferenceRepository.listAll();
                     List<RoomOccupancy> currentRoomOccupancies = roomOccupancyRepository.findEndDateBeforeCurrentDate();
                     roomOccupancyRepository.deleteAll();
-                    // Create maps for quick lookups
+
                     Map<UUID, Preference> studentPreferences = preferences.stream()
                             .collect(Collectors.toMap(p -> p.getStudent().getId(), preference -> preference));
 
